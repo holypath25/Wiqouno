@@ -13,7 +13,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap">
-<!-- GA4: paste your Google tag (gtag.js) snippet here -->
+<!-- Google tag (gtag.js) - Google Ads AW-18510931815 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18510931815"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18510931815');
+  // WhatsApp inquiry = Google Ads conversion "문의"
+  function trackWhatsAppConversion() {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18510931815/-gyECNG3xZsdEOfO2fpE',
+      'value': 1.0,
+      'currency': 'KRW',
+      'transport_type': 'beacon'
+    });
+  }
+</script>
 <style>
 html{scroll-behavior:smooth}
 body{margin:0}
@@ -265,9 +281,17 @@ WhatsApp</a>
     add('Quantity (boxes)', v('quantity'));
     add('Message', v('message'));
     var url = 'https://wa.me/821081641410?text=' + encodeURIComponent(lines.join('\n'));
-    if (typeof gtag === 'function') { gtag('event', 'whatsapp_form_submit'); }
+    trackWhatsAppConversion();
     window.open(url, '_blank', 'noopener');
   });
+})();
+(function () {
+  var links = document.querySelectorAll('a[href^="https://wa.me/"]');
+  for (var i = 0; i < links.length; i++) {
+    links[i].setAttribute('target', '_blank');
+    links[i].setAttribute('rel', 'noopener');
+    links[i].addEventListener('click', trackWhatsAppConversion);
+  }
 })();
 </script>
 </body>
